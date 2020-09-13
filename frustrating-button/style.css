@@ -1,3 +1,16 @@
+.center {
+  position: absolute;
+  margin: 0;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
 #button {
   position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+#points-wrapper {
+  top: 45%;
 }
