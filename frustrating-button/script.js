@@ -38,11 +38,11 @@ initiateDialogue = () => {
 document.querySelector("#button").onclick = () => {
   givePoint();
   if (points === 20) setInterval(moveButton, 500);
-  else if (points > 3) { clearTimeout(timeout); moveButton(); }
+  else if (points > 3 && points < 20) { clearTimeout(timeout); moveButton(); }
 }
 
 // button hovered -> move depending on how far into game
 document.querySelector("#button").onmouseover = () => {
   if (points > 25) moveButton();
-  else if (points > 10) timeout = setTimeout(moveButton, 200);
+  else if (points > 10 && points < 20) timeout = setTimeout(moveButton, 200);
 }
