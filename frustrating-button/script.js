@@ -42,6 +42,7 @@ document.querySelector("#button").onclick = () => {
 
 // button hovered -> move depending on how far into game
 document.querySelector("#button").onmouseover = () => {
-  if (points === 20) setInterval(moveButton, 500);
+  if (points > 25) moveButton();
+  else if (points === 20) setInterval(moveButton, 500);
   else if (points > 10) timeout = setTimeout(moveButton, 200);
 }
