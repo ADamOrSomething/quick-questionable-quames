@@ -26,7 +26,7 @@ initiateDialogue = () => {
   let dialogue = "";
 
   if (points > 19) dialogue = "C'mon, I need you to get points!";
-  if (points > 10) dialogue = "Why're you not getting as many points now?";
+  else if (points > 10) dialogue = "Why're you not getting as many points now?";
   else if (points > 4) dialogue = "Keep it going!";
   else if (points > 0) dialogue = "See, there you go! Easy as pie.";
 
