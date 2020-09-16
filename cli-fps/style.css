@@ -1,0 +1,24 @@
+html, body {
+  height: 99%;
+}
+
+#wrapper {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+}
+
+#input {
+  flex-grow: 1;
+}
+
+#input-wrapper {
+  display: flex;
+  align-self: flex-end;
+  flex-grow: 1;
+}
+
+#gt-sign {
+  margin-right: 0.5%;
+}
