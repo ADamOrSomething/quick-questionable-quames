@@ -2,23 +2,24 @@ html, body {
   height: 99%;
 }
 
-#wrapper {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  justify-content: center;
-}
-
 #input {
   flex-grow: 1;
 }
 
 #input-wrapper {
   display: flex;
-  align-self: flex-end;
-  flex-grow: 1;
+  align-items: flex-end;
+  width: 100%;
+  height: 99%;
 }
 
 #gt-sign {
   margin-right: 0.5%;
+}
+
+#text {
+  position: absolute;
+  resize: none;
+  height: 94%;
+  width: 98.85%;
 }
