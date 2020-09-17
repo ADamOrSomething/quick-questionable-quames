@@ -13,6 +13,14 @@ const commandExecuted = e => {
 
   // add command to CLI display
   addToCLI(`> ${command}`);
+
+  // run command
+  result = executeCommand(command);
+  if (result === false) {
+    addToCLI("Unrecognized command! Type \"help\" for help.");
+  } else {
+    addToCLI(result);
+  }
 }
 
 // add text to CLI
