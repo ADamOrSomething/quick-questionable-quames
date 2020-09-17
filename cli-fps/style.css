@@ -4,6 +4,7 @@ html, body {
 
 #input {
   flex-grow: 1;
+  border: none;
 }
 
 #input-wrapper {
