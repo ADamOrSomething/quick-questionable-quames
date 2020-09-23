@@ -25,6 +25,29 @@ class Board {
     }
     if (this.getPiece(x, y) && piece.white === this.getPiece(x, y).white)
       validMove = false;
+    if (!(piece instanceof Knight)) {
+      if (piece.x === x) {
+        if (piece.y < y) {
+          for (let i = piece.y + 1; i < y; i++) {
+            if (this.getPiece(x, i)) validMove = false;
+          }
+        } else if (piece.y > y) {
+          for (let i = piece.y - 1; i > y; i--) {
+            if (this.getPiece(x, i)) validMove = false;
+          }
+        }
+      } else if (piece.y === y) {
+        if (piece.x < x) {
+          for (let i = piece.x + 1; i < x; i++) {
+            if (this.getPiece(i, y)) validMove = false;
+          }
+        } else if (piece.x > x) {
+          for (let i = piece.x - 1; i > x; i--) {
+            if (this.getPiece(i, y)) validMove = false;
+          }
+        }
+      }
+    }
     if (validMove) {
       this._pieceMatrix[piece.y][piece.x] = null;
       this._pieceMatrix[y][x] = piece;
