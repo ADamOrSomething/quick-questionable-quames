@@ -11,6 +11,15 @@ class Board {
   movePiece(piece, x, y) {
     let validMove = true;
     if (piece instanceof Pawn) {
+      if (piece.white) {
+        if (!(piece.y + 1 === y && !this.getPiece(x, y))) {
+          validMove = false;
+        }
+      } else {
+        if (!(!piece.white && piece.y - 1 === y && !this.getPiece(x, y))) {
+          validMove = false;
+        }
+      }
     } else if (!piece.verifyMove(x, y)) {
       validMove = false;
     }
