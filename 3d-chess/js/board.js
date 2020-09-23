@@ -55,6 +55,24 @@ class Board {
             if (this.getPiece(i, y)) validMove = false;
           }
         }
+      } else if (Math.abs(piece.x - x) === Math.abs(piece.y - y)) {
+        if (piece.x > x && piece.y > y) {
+          for (let i = x, j = y; i < piece.x; i++, j++) {
+            if (this.getPiece(i, j)) validMove = false;
+          }
+        } else if (piece.x > x && piece.y < y) {
+          for (let i = x, j = y; i < piece.x; i++, j--) {
+            if (this.getPiece(i, j)) validMove = false;
+          }
+        } else if (piece.x < x && piece.y > y) {
+          for (let i = x, j = y; i > piece.x; i--, j++) {
+            if (this.getPiece(i, j)) validMove = false;
+          }
+        } else if (piece.x < x && piece.y < y) {
+          for (let i = x, j = y; i > piece.x; i--, j--) {
+            if (this.getPiece(i, j)) validMove = false;
+          }
+        }
       }
     }
     if (validMove) {

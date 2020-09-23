@@ -31,7 +31,6 @@ class Game {
   }
 
   dragEnd(x, y) {
-    console.log(x, y);
     if (this.pieceSelected) this.click(x, y);
   }
 }
