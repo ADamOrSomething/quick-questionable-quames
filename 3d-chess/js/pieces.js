@@ -27,12 +27,21 @@ class Piece {
 }
 
 class Pawn extends Piece {
+  constructor(x, y, white) {
+    super(x, y, white);
+    this._moved = false;
+  }
+
   get visual() {
     return 'pawn';
   }
 
-  verifyMove(x, y) {
+  get moved() {
+    return this._moved;
+  }
 
+  set moved(moved) {
+    this._moved = moved;
   }
 }
 

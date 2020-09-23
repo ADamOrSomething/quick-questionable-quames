@@ -13,11 +13,17 @@ class Board {
     // pawns are annoying fricks that need their own logic
     if (piece instanceof Pawn) {
       if (piece.white) {
-        if (!(piece.y + 1 === y && !this.getPiece(x, y) && piece.x === x)) {
+        if (piece.y + 1 === y && !this.getPiece(x, y) && piece.x === x) { }
+        else if (piece.y + 2 === y && !this.getPiece(x, y) && piece.x === x && !piece.moved) { }
+        else if (piece.y + 1 === y && (piece.x + 1 === x || piece.x - 1 === x) && this.getPiece(x, y)) { }
+        else {
           validMove = false;
         }
       } else {
-        if (!(!piece.white && piece.y - 1 === y && !this.getPiece(x, y) && piece.x === x)) {
+        if (piece.y - 1 === y && !this.getPiece(x, y) && piece.x === x) { }
+        else if (piece.y - 2 === y && !this.getPiece(x, y) && piece.x === x && !piece.moved) { }
+        else if (piece.y - 1 === y && (piece.x + 1 === x || piece.x - 1 === x) && this.getPiece(x, y)) { }
+        else {
           validMove = false;
         }
       }
@@ -56,6 +62,9 @@ class Board {
       this._pieceMatrix[y][x] = piece;
       piece.x = x;
       piece.y = y;
+      // pawns are still annoying fricks
+      if (piece instanceof Pawn)
+        piece.moved = true;
     }
     return validMove;
   }
