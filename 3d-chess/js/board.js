@@ -12,11 +12,11 @@ class Board {
     let validMove = true;
     if (piece instanceof Pawn) {
       if (piece.white) {
-        if (!(piece.y + 1 === y && !this.getPiece(x, y))) {
+        if (!(piece.y + 1 === y && !this.getPiece(x, y) && piece.x === x)) {
           validMove = false;
         }
       } else {
-        if (!(!piece.white && piece.y - 1 === y && !this.getPiece(x, y))) {
+        if (!(!piece.white && piece.y - 1 === y && !this.getPiece(x, y) && piece.x === x)) {
           validMove = false;
         }
       }
@@ -54,6 +54,7 @@ class Board {
       piece.x = x;
       piece.y = y;
     }
+    return validMove;
   }
 
   initializeBoard() {

@@ -4,6 +4,7 @@ class Game {
     this.overlayRender = overlayRender;
     this.board = new Board();
     this.pieceSelected = null;
+    this.whiteTurn = true;
 
     this.render(this.board.pieceMatrix);
   }
@@ -11,11 +12,16 @@ class Game {
   click(x, y) {
     if (!this.pieceSelected) {
       this.pieceSelected = this.board.getPiece(x, y);
+      if (this.pieceSelected) {
+        if (!(this.whiteTurn === this.pieceSelected.white)) this.pieceSelected = null;
+      }
       if (this.pieceSelected) this.overlayRender(x, y, 'selected');
     } else {
-      this.board.movePiece(this.pieceSelected, x, y);
-      this.render(this.board.pieceMatrix);
-      this.pieceSelected = null;
+      if (this.board.movePiece(this.pieceSelected, x, y)) {
+        this.whiteTurn = !this.whiteTurn;
+        this.render(this.board.pieceMatrix);
+        this.pieceSelected = null;
+      }
     }
   }
 }
