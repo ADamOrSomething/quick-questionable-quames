@@ -19,9 +19,9 @@ class Game {
     } else {
       if (this.board.movePiece(this.pieceSelected, x, y)) {
         this.whiteTurn = !this.whiteTurn;
-        this.render(this.board.pieceMatrix);
-        this.pieceSelected = null;
       }
+      this.pieceSelected = null;
+      this.render(this.board.pieceMatrix);
     }
   }
 }
