@@ -3,6 +3,7 @@ class Piece {
     this._x = x;
     this._y = y;
     this._white = white;
+    this._moved = false;
   }
 
   get x() {
@@ -24,17 +25,6 @@ class Piece {
   get white() {
     return this._white;
   }
-}
-
-class Pawn extends Piece {
-  constructor(x, y, white) {
-    super(x, y, white);
-    this._moved = false;
-  }
-
-  get visual() {
-    return 'pawn';
-  }
 
   get moved() {
     return this._moved;
@@ -45,11 +35,36 @@ class Pawn extends Piece {
   }
 }
 
+class Pawn extends Piece {
+  get visual() {
+    return 'pawn';
+  }
+}
+
 class Rook extends Piece {
+  projectMoves() {
+    let moves = [];
+    for (let i = this._x + 1; i < 8; i++) {
+      moves.push([i, this._y]);
+    }
+    for (let i = this._x - 1; i > 0; i--) {
+      moves.push([i, this._y]);
+    }
+    for (let i = this._y + 1; i < 8; i++) {
+      moves.push([this._x, i]);
+    }
+    for (let i = this._y - 1; i > 0; i--) {
+      moves.push([this._x, i]);
+    }
+
+    console.log(moves);
+    return moves;
+  }
+
   get visual() {
     return 'rook';
   }
-  
+
   verifyMove(x, y) {
     if (this._x === x) return true;
     if (this._y === y) return true;
@@ -59,10 +74,22 @@ class Rook extends Piece {
 }
 
 class Knight extends Piece {
+  projectMoves() {
+    const moves = [];
+    moves.push([this._x + 2, this._y + 1]);
+    moves.push([this._x + 2, this._y - 1]);
+    moves.push([this._x - 2, this._y + 1]);
+    moves.push([this._x - 2, this._y - 1]);
+    moves.push([this._y + 2, this._x + 1]);
+    moves.push([this._y + 2, this._x - 1]);
+    moves.push([this._y - 2, this._x + 1]);
+    moves.push([this._y - 2, this._x - 1]);
+  }
+
   get visual() {
     return 'knight';
   }
-  
+
   verifyMove(x, y) {
     const distanceX = Math.abs(x - this._x);
     const distanceY = Math.abs(y - this._y);
@@ -77,7 +104,7 @@ class Bishop extends Piece {
   get visual() {
     return 'bishop';
   }
-  
+
   verifyMove(x, y) {
     const distanceX = Math.abs(x - this._x);
     const distanceY = Math.abs(y - this._y);
@@ -92,7 +119,7 @@ class Queen extends Piece {
   get visual() {
     return 'queen';
   }
-  
+
   verifyMove(x, y) {
     // can move like rook
     if (this._x === x) return true;
@@ -111,7 +138,7 @@ class King extends Piece {
   get visual() {
     return 'king';
   }
-  
+
   verifyMove(x, y) {
     const distanceX = Math.abs(x - this._x);
     const distanceY = Math.abs(y - this._y);

@@ -2,10 +2,15 @@ class Board {
   constructor() {
     this._pieceMatrix = [];
     this.initializeBoard();
+    this.lastPieceMoved = null;
   }
 
   getPiece(x, y) {
     return this._pieceMatrix[y][x];
+  }
+
+  checkCheck() {
+
   }
 
   movePiece(piece, x, y) {
@@ -55,7 +60,7 @@ class Board {
             if (this.getPiece(i, y)) validMove = false;
           }
         }
-      } else if (Math.abs(piece.x - x) === Math.abs(piece.y - y)) {
+      } else if (Math.abs(piece.x - x) === Math.abs(piece.y - y) && !(piece instanceof Pawn)) {
         if (piece.x > x && piece.y > y) {
           for (let i = x, j = y; i < piece.x; i++, j++) {
             if (this.getPiece(i, j)) validMove = false;
@@ -80,6 +85,7 @@ class Board {
       this._pieceMatrix[y][x] = piece;
       piece.x = x;
       piece.y = y;
+      this.lastPieceMoved = piece;
       // pawns are still annoying fricks
       if (piece instanceof Pawn)
         piece.moved = true;
@@ -90,6 +96,7 @@ class Board {
   initializeBoard() {
     let row1 = [];
     row1.push(new Rook(0, 0, true));
+    row1[0].projectMoves();
     row1.push(new Knight(1, 0, true));
     row1.push(new Bishop(2, 0, true));
     row1.push(new King(3, 0, true));
