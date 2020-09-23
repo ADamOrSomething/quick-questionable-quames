@@ -4,6 +4,17 @@ class Board {
     this.initializeBoard();
   }
 
+  getPiece(x, y) {
+    return this._pieceMatrix[y][x];
+  }
+
+  movePiece(piece, x, y) {
+    this._pieceMatrix[piece.y][piece.x] = null;
+    this._pieceMatrix[y][x] = piece;
+    piece.x = x;
+    piece.y = y;
+  }
+
   initializeBoard() {
     let row1 = [];
     row1.push(new Rook(0, 0, true));
@@ -18,10 +29,10 @@ class Board {
     let row2 = [];
     for (let i = 0; i < 8; i++) row2.push(new Pawn(i, 1, true));
 
-    let row3 = [];
-    let row4 = [];
-    let row5 = [];
-    let row6 = [];
+    let row3 = [null, null, null, null, null, null, null, null];
+    let row4 = [null, null, null, null, null, null, null, null];
+    let row5 = [null, null, null, null, null, null, null, null];
+    let row6 = [null, null, null, null, null, null, null, null];
 
     let row7 = [];
     for (let i = 0; i < 8; i++) row7.push(new Pawn(i, 6, false));

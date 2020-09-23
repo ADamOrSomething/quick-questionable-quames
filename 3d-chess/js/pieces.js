@@ -13,6 +13,14 @@ class Piece {
     this._x = x;
   }
 
+  get y() {
+    return this._y;
+  }
+
+  set y(y) {
+    this._y = y;
+  }
+
   get white() {
     return this._white;
   }

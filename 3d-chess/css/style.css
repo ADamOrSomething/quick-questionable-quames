@@ -2,6 +2,10 @@ h1 {
   margin-left: 5em;
 }
 
+.selected {
+  border: green 2px solid;
+}
+
 .game-wrapper {
   display: flex;
   flex-direction: column;
@@ -22,6 +26,7 @@ h1 {
   background-size: 75%;
   background-repeat: no-repeat;
   background-position: center;
+  box-sizing: border-box;
 }
 
 .game-row:nth-child(odd) .square:nth-child(odd) {
