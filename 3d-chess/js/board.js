@@ -10,6 +10,7 @@ class Board {
 
   movePiece(piece, x, y) {
     let validMove = true;
+    // pawns are annoying fricks that need their own logic
     if (piece instanceof Pawn) {
       if (piece.white) {
         if (!(piece.y + 1 === y && !this.getPiece(x, y) && piece.x === x)) {
@@ -23,8 +24,10 @@ class Board {
     } else if (!piece.verifyMove(x, y)) {
       validMove = false;
     }
+    // don't kill your teammates
     if (this.getPiece(x, y) && piece.white === this.getPiece(x, y).white)
       validMove = false;
+    // don't jump over other pieces unless you're a knight
     if (!(piece instanceof Knight)) {
       if (piece.x === x) {
         if (piece.y < y) {
