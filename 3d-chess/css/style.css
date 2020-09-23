@@ -30,19 +30,19 @@ h1 {
 }
 
 .game-row:nth-child(odd) .square:nth-child(odd) {
-  background-color: white;
+  background-color: #e4e4e4;
 }
 
 .game-row:nth-child(odd) .square:nth-child(even) {
-  background-color: black;
+  background-color: #141414;
 }
 
 .game-row:nth-child(even) .square:nth-child(odd) {
-  background-color: black;
+  background-color: #141414;
 }
 
 .game-row:nth-child(even) .square:nth-child(even) {
-  background-color: white;
+  background-color: #e4e4e4;
 }
 
 .white-pawn {
