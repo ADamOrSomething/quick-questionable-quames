@@ -9,7 +9,14 @@ class Board {
   }
 
   movePiece(piece, x, y) {
-    if (piece.verifyMove(x, y)) {
+    let validMove = true;
+    if (piece instanceof Pawn) {
+    } else if (!piece.verifyMove(x, y)) {
+      validMove = false;
+    }
+    if (this.getPiece(x, y) && piece.white === this.getPiece(x, y).white)
+      validMove = false;
+    if (validMove) {
       this._pieceMatrix[piece.y][piece.x] = null;
       this._pieceMatrix[y][x] = piece;
       piece.x = x;

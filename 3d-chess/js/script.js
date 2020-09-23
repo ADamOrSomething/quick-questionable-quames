@@ -17,9 +17,9 @@ const game = new Game(render, overlayRender);
 
 $('.game-wrapper').click(e => {
   // if you have no idea why this variable is named xmc I let my friend name it
-  const xmc = Math.floor((e.clientX - $('.game-wrapper').offset().left) / $('.square').width());
+  const xmc = Math.floor((e.pageX - $('.game-wrapper').offset().left) / $('.square').width());
   // if you have no idea why this variable is named sprite I let my other friend name it
-  const sprite = 7 - Math.floor((e.clientY - $('.game-wrapper').offset().top) / $('.square').width());
+  const sprite = 7 - Math.floor((e.pageY - $('.game-wrapper').offset().top) / $('.square').width());
 
   game.click(xmc, sprite);
 });

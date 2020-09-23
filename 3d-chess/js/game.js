@@ -11,7 +11,7 @@ class Game {
   click(x, y) {
     if (!this.pieceSelected) {
       this.pieceSelected = this.board.getPiece(x, y);
-      this.overlayRender(x, y, 'selected');
+      if (this.pieceSelected) this.overlayRender(x, y, 'selected');
     } else {
       this.board.movePiece(this.pieceSelected, x, y);
       this.render(this.board.pieceMatrix);
