@@ -9,10 +9,12 @@ class Board {
   }
 
   movePiece(piece, x, y) {
-    this._pieceMatrix[piece.y][piece.x] = null;
-    this._pieceMatrix[y][x] = piece;
-    piece.x = x;
-    piece.y = y;
+    if (piece.verifyMove(x, y)) {
+      this._pieceMatrix[piece.y][piece.x] = null;
+      this._pieceMatrix[y][x] = piece;
+      piece.x = x;
+      piece.y = y;
+    }
   }
 
   initializeBoard() {

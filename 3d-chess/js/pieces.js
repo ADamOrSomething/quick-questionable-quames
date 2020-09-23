@@ -31,7 +31,7 @@ class Pawn extends Piece {
     return 'pawn';
   }
 
-  verifyMove(oldX, oldY, newX, newY) {
+  verifyMove(x, y) {
 
   }
 }
@@ -41,9 +41,9 @@ class Rook extends Piece {
     return 'rook';
   }
   
-  verifyMove(oldX, oldY, newX, newY) {
-    if (oldX === newX) return true;
-    if (oldY === newY) return true;
+  verifyMove(x, y) {
+    if (this._x === x) return true;
+    if (this._y === y) return true;
 
     return false;
   }
@@ -54,9 +54,9 @@ class Knight extends Piece {
     return 'knight';
   }
   
-  verifyMove(oldX, oldY, newX, newY) {
-    const distanceX = Math.abs(newX - oldX);
-    const distanceY = Math.abs(newY - oldY);
+  verifyMove(x, y) {
+    const distanceX = Math.abs(x - this._x);
+    const distanceY = Math.abs(y - this._y);
 
     if (distanceX + distanceY === 3 && Math.abs(distanceX - distanceY) === 1) return true;
 
@@ -69,9 +69,9 @@ class Bishop extends Piece {
     return 'bishop';
   }
   
-  verifyMove(oldX, oldY, newX, newY) {
-    const distanceX = Math.abs(newX - oldX);
-    const distanceY = Math.abs(newY - oldY);
+  verifyMove(x, y) {
+    const distanceX = Math.abs(x - this._x);
+    const distanceY = Math.abs(y - this._y);
 
     if (distanceX === distanceY) return true;
 
@@ -84,14 +84,14 @@ class Queen extends Piece {
     return 'queen';
   }
   
-  verifyMove(oldX, oldY, newX, newY) {
+  verifyMove(x, y) {
     // can move like rook
-    if (oldX === newX) return true;
-    if (oldY === newY) return true;
+    if (this._x === x) return true;
+    if (this._y === y) return true;
 
     // or bishop
-    const distanceX = Math.abs(newX - oldX);
-    const distanceY = Math.abs(newY - oldY);
+    const distanceX = Math.abs(x - this._x);
+    const distanceY = Math.abs(y - this._y);
     if (distanceX === distanceY) return true;
 
     return false;
@@ -103,9 +103,9 @@ class King extends Piece {
     return 'king';
   }
   
-  verifyMove(oldX, oldY, newX, newY) {
-    const distanceX = Math.abs(newX - oldX);
-    const distanceY = Math.abs(newY - oldY);
+  verifyMove(x, y) {
+    const distanceX = Math.abs(x - this._x);
+    const distanceY = Math.abs(y - this._y);
 
     if (distanceX < 2 && distanceY < 2) return true;
 
