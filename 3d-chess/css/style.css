@@ -23,7 +23,6 @@ h1 {
 .square {
   display: flex;
   flex-grow: 1;
-  background-size: 75%;
   background-repeat: no-repeat;
   background-position: center;
   box-sizing: border-box;
@@ -47,49 +46,49 @@ h1 {
 }
 
 .white-pawn {
-  background-image: url('../assets/white_pawn.png') !important;
+  background-image: url('../assets/white-pawn.png') !important;
 }
 
 .white-rook {
-  background-image: url('../assets/white_rook.png') !important;
+  background-image: url('../assets/white-rook.png') !important;
 }
 
 .white-knight {
-  background-image: url('../assets/white_knight.png') !important;
+  background-image: url('../assets/white-knight.png') !important;
 }
 
 .white-bishop {
-  background-image: url('../assets/white_bishop.png') !important;
+  background-image: url('../assets/white-bishop.png') !important;
 }
 
 .white-queen {
-  background-image: url('../assets/white_queen.png') !important;
+  background-image: url('../assets/white-queen.png') !important;
 }
 
 .white-king {
-  background-image: url('../assets/white_king.png') !important;
+  background-image: url('../assets/white-king.png') !important;
 }
 
 .black-pawn {
-  background-image: url('../assets/black_pawn.png') !important;
+  background-image: url('../assets/black-pawn.png') !important;
 }
 
 .black-rook {
-  background-image: url('../assets/black_rook.png') !important;
+  background-image: url('../assets/black-rook.png') !important;
 }
 
 .black-knight {
-  background-image: url('../assets/black_knight.png') !important;
+  background-image: url('../assets/black-knight.png') !important;
 }
 
 .black-bishop {
-  background-image: url('../assets/black_bishop.png') !important;
+  background-image: url('../assets/black-bishop.png') !important;
 }
 
 .black-queen {
-  background-image: url('../assets/black_queen.png') !important;
+  background-image: url('../assets/black-queen.png') !important;
 }
 
 .black-king {
-  background-image: url('../assets/black_king.png') !important;
+  background-image: url('../assets/black-king.png') !important;
 }

@@ -24,4 +24,14 @@ class Game {
       this.render(this.board.pieceMatrix);
     }
   }
+
+  dragStart(x, y) {
+    this.pieceSelected = null;
+    this.click(x, y);
+  }
+
+  dragEnd(x, y) {
+    console.log(x, y);
+    if (this.pieceSelected) this.click(x, y);
+  }
 }
