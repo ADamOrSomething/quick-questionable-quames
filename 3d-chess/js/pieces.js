@@ -75,15 +75,22 @@ class Rook extends Piece {
 
 class Knight extends Piece {
   projectMoves() {
-    const moves = [];
+    let moves = [];
     moves.push([this._x + 2, this._y + 1]);
     moves.push([this._x + 2, this._y - 1]);
     moves.push([this._x - 2, this._y + 1]);
     moves.push([this._x - 2, this._y - 1]);
-    moves.push([this._y + 2, this._x + 1]);
-    moves.push([this._y + 2, this._x - 1]);
-    moves.push([this._y - 2, this._x + 1]);
-    moves.push([this._y - 2, this._x - 1]);
+    moves.push([this._x + 1, this._y + 2]);
+    moves.push([this._x + 1, this._y - 2]);
+    moves.push([this._x - 1, this._y + 2]);
+    moves.push([this._x - 1, this._y - 2]);
+
+    moves = moves.filter(e => {
+      if (e[0] < 8 && e[0] >= 0 && e[1] < 8 && e[1] >= 0) return true;
+      return false;
+    });
+
+    return moves;
   }
 
   get visual() {
@@ -101,6 +108,26 @@ class Knight extends Piece {
 }
 
 class Bishop extends Piece {
+  projectMoves() {
+    let moves = [];
+
+    for (let i = this._x + 1, j = this._y + 1, k = this._y - 1; i < 8; i++, j++, k--) {
+      moves.push([i, j]);
+      moves.push([i, k]);
+    }
+    for (let i = this._x - 1, j = this._y + 1, k = this._y - 1; i > 0; i--, j++, k--) {
+      moves.push([i, j]);
+      moves.push([i, k]);
+    }
+
+    moves = moves.filter(e => {
+      if(e[0] < 8 && e[0] >= 0 && e[1] < 8 && e[1] >= 0) return true;
+      return false;
+    });
+
+    return moves;
+  }
+
   get visual() {
     return 'bishop';
   }

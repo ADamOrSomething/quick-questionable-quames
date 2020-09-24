@@ -3,7 +3,11 @@ h1 {
 }
 
 .selected {
-  border: green 2px solid !important;
+  border: green 4px solid !important;
+}
+
+.projection {
+  border: green 4px dotted !important;
 }
 
 .game-wrapper {
@@ -26,7 +30,7 @@ h1 {
   background-repeat: no-repeat;
   background-position: center;
   box-sizing: border-box;
-  border: rgba(255, 255, 255, 0) 2px solid;
+  border: rgba(255, 255, 255, 0) 4px solid;
 }
 
 .game-row:nth-child(odd) .square:nth-child(odd) {

@@ -15,7 +15,12 @@ class Game {
       if (this.pieceSelected) {
         if (!(this.whiteTurn === this.pieceSelected.white)) this.pieceSelected = null;
       }
-      if (this.pieceSelected) this.overlayRender(x, y, 'selected');
+      if (this.pieceSelected) {
+        this.overlayRender(x, y, 'selected');
+        this.pieceSelected.projectMoves().forEach(e => {
+          this.overlayRender(e[0], e[1], 'projection');
+        });
+      }
     } else {
       if (this.board.movePiece(this.pieceSelected, x, y)) {
         this.whiteTurn = !this.whiteTurn;
