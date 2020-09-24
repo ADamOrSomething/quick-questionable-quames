@@ -14,6 +14,17 @@
 .square {
   display: flex;
   flex-grow: 1;
+  border: rgba(255, 255, 255, 0) 5px solid;
+}
+
+.red {
+  border: 5px red solid;
+  border-radius: 50%;
+}
+
+.white {
+  border: 5px white solid;
+  border-radius: 50%;
 }
 
 .row:nth-child(odd) .square:nth-child(odd) {
@@ -21,11 +32,11 @@
 }
 
 .row:nth-child(odd) .square:nth-child(even) {
-  background: white;
+  background: wheat;
 }
 
 .row:nth-child(even) .square:nth-child(odd) {
-  background: white;
+  background: wheat;
 }
 
 .row:nth-child(even) .square:nth-child(even) {
