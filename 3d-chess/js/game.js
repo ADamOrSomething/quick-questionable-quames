@@ -17,7 +17,7 @@ class Game {
       }
       if (this.pieceSelected) {
         this.overlayRender(x, y, 'selected');
-        this.pieceSelected.projectMoves().forEach(e => {
+        this.pieceSelected.projectMoves(this.board).forEach(e => {
           this.overlayRender(e[0], e[1], 'projection');
         });
       }

@@ -96,7 +96,6 @@ class Board {
   initializeBoard() {
     let row1 = [];
     row1.push(new Rook(0, 0, true));
-    row1[0].projectMoves();
     row1.push(new Knight(1, 0, true));
     row1.push(new Bishop(2, 0, true));
     row1.push(new King(3, 0, true));

@@ -42,18 +42,23 @@ class Pawn extends Piece {
 }
 
 class Rook extends Piece {
-  projectMoves() {
+  projectMoves(board) {
     let moves = [];
+
     for (let i = this._x + 1; i < 8; i++) {
+      if (board.getPiece(i, this._y)) break;
       moves.push([i, this._y]);
     }
     for (let i = this._x - 1; i >= 0; i--) {
+      if (board.getPiece(i, this._y)) break;
       moves.push([i, this._y]);
     }
     for (let i = this._y + 1; i < 8; i++) {
+      if (board.getPiece(this._x, i)) break;
       moves.push([this._x, i]);
     }
     for (let i = this._y - 1; i >= 0; i--) {
+      if (board.getPiece(this._x, i)) break;
       moves.push([this._x, i]);
     }
 
@@ -73,7 +78,7 @@ class Rook extends Piece {
 }
 
 class Knight extends Piece {
-  projectMoves() {
+  projectMoves(board) {
     let moves = [];
     moves.push([this._x + 2, this._y + 1]);
     moves.push([this._x + 2, this._y - 1]);
@@ -85,7 +90,8 @@ class Knight extends Piece {
     moves.push([this._x - 1, this._y - 2]);
 
     moves = moves.filter(e => {
-      if (e[0] < 8 && e[0] >= 0 && e[1] < 8 && e[1] >= 0) return true;
+      if ((e[0] < 8 && e[0] >= 0 && e[1] < 8 && e[1] >= 0) &&
+        !board.getPiece(e[0], e[1])) return true;
       return false;
     });
 
@@ -107,17 +113,27 @@ class Knight extends Piece {
 }
 
 class Bishop extends Piece {
-  projectMoves() {
+  projectMoves(board) {
     let moves = [];
 
-    for (let i = this._x + 1, j = this._y + 1, k = this._y - 1; i < 8; i++, j++, k--) {
-      moves.push([i, j]);
-      moves.push([i, k]);
-    }
-    for (let i = this._x - 1, j = this._y + 1, k = this._y - 1; i >= 0; i--, j++, k--) {
-      moves.push([i, j]);
-      moves.push([i, k]);
-    }
+    try {
+      for (let i = this._x + 1, j = this._y + 1; i < 8; i++, j++) {
+        if (board.getPiece(i, j)) break;
+        moves.push([i, j]);
+      }
+      for (let i = this._x + 1, j = this._y - 1; i < 8; i++, j--) {
+        if (board.getPiece(i, j)) break;
+        moves.push([i, j]);
+      }
+      for (let i = this._x - 1, j = this._y + 1; i >= 0; i--, j++) {
+        if (board.getPiece(i, j)) break;
+        moves.push([i, j]);
+      }
+      for (let i = this._x - 1, j = this._y + 1; i >= 0; i--, j--) {
+        if (board.getPiece(i, j)) break;
+        moves.push([i, j]);
+      }
+    } catch { }
 
     moves = moves.filter(e => {
       if (e[0] < 8 && e[0] >= 0 && e[1] < 8 && e[1] >= 0) return true;
@@ -142,31 +158,45 @@ class Bishop extends Piece {
 }
 
 class Queen extends Piece {
-  projectMoves() {
+  projectMoves(board) {
     // just copied the rook and bishop logic lmao
     let moves = [];
 
     for (let i = this._x + 1; i < 8; i++) {
+      if (board.getPiece(i, this._y)) break;
       moves.push([i, this._y]);
     }
     for (let i = this._x - 1; i >= 0; i--) {
+      if (board.getPiece(i, this._y)) break;
       moves.push([i, this._y]);
     }
     for (let i = this._y + 1; i < 8; i++) {
+      if (board.getPiece(this._x, i)) break;
       moves.push([this._x, i]);
     }
     for (let i = this._y - 1; i >= 0; i--) {
+      if (board.getPiece(this._x, i)) break;
       moves.push([this._x, i]);
     }
 
-    for (let i = this._x + 1, j = this._y + 1, k = this._y - 1; i < 8; i++, j++, k--) {
-      moves.push([i, j]);
-      moves.push([i, k]);
-    }
-    for (let i = this._x - 1, j = this._y + 1, k = this._y - 1; i >= 0; i--, j++, k--) {
-      moves.push([i, j]);
-      moves.push([i, k]);
-    }
+    try {
+      for (let i = this._x + 1, j = this._y + 1; i < 8; i++, j++) {
+        if (board.getPiece(i, j)) break;
+        moves.push([i, j]);
+      }
+      for (let i = this._x + 1, j = this._y - 1; i < 8; i++, j--) {
+        if (board.getPiece(i, j)) break;
+        moves.push([i, j]);
+      }
+      for (let i = this._x - 1, j = this._y + 1; i >= 0; i--, j++) {
+        if (board.getPiece(i, j)) break;
+        moves.push([i, j]);
+      }
+      for (let i = this._x - 1, j = this._y + 1; i >= 0; i--, j--) {
+        if (board.getPiece(i, j)) break;
+        moves.push([i, j]);
+      }
+    } catch { }
 
     moves = moves.filter(e => {
       if (e[0] < 8 && e[0] >= 0 && e[1] < 8 && e[1] >= 0) return true;
@@ -195,7 +225,7 @@ class Queen extends Piece {
 }
 
 class King extends Piece {
-  projectMoves() {
+  projectMoves(board) {
     let moves = [];
 
     moves.push([this._x, this._y + 1]);
@@ -208,7 +238,8 @@ class King extends Piece {
     moves.push([this._x - 1, this._y + 1]);
 
     moves.filter(e => {
-      if (e[0] < 7 && e[0] >= 0 && e[1] < 7 && e[1] >= 0) return true;
+      if (e[0] < 7 && e[0] >= 0 && e[1] < 7 && e[1] >= 0 &&
+        !board.getPiece(e[0], e[1])) return true;
       return false;
     })
 
