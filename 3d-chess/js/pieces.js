@@ -47,13 +47,13 @@ class Rook extends Piece {
     for (let i = this._x + 1; i < 8; i++) {
       moves.push([i, this._y]);
     }
-    for (let i = this._x - 1; i > 0; i--) {
+    for (let i = this._x - 1; i >= 0; i--) {
       moves.push([i, this._y]);
     }
     for (let i = this._y + 1; i < 8; i++) {
       moves.push([this._x, i]);
     }
-    for (let i = this._y - 1; i > 0; i--) {
+    for (let i = this._y - 1; i >= 0; i--) {
       moves.push([this._x, i]);
     }
 
@@ -115,7 +115,7 @@ class Bishop extends Piece {
       moves.push([i, j]);
       moves.push([i, k]);
     }
-    for (let i = this._x - 1, j = this._y + 1, k = this._y - 1; i > 0; i--, j++, k--) {
+    for (let i = this._x - 1, j = this._y + 1, k = this._y - 1; i >= 0; i--, j++, k--) {
       moves.push([i, j]);
       moves.push([i, k]);
     }
