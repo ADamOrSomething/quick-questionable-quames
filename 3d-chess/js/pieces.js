@@ -57,7 +57,6 @@ class Rook extends Piece {
       moves.push([this._x, i]);
     }
 
-    console.log(moves);
     return moves;
   }
 
@@ -121,7 +120,7 @@ class Bishop extends Piece {
     }
 
     moves = moves.filter(e => {
-      if(e[0] < 8 && e[0] >= 0 && e[1] < 8 && e[1] >= 0) return true;
+      if (e[0] < 8 && e[0] >= 0 && e[1] < 8 && e[1] >= 0) return true;
       return false;
     });
 
@@ -143,6 +142,40 @@ class Bishop extends Piece {
 }
 
 class Queen extends Piece {
+  projectMoves() {
+    // just copied the rook and bishop logic lmao
+    let moves = [];
+
+    for (let i = this._x + 1; i < 8; i++) {
+      moves.push([i, this._y]);
+    }
+    for (let i = this._x - 1; i >= 0; i--) {
+      moves.push([i, this._y]);
+    }
+    for (let i = this._y + 1; i < 8; i++) {
+      moves.push([this._x, i]);
+    }
+    for (let i = this._y - 1; i >= 0; i--) {
+      moves.push([this._x, i]);
+    }
+
+    for (let i = this._x + 1, j = this._y + 1, k = this._y - 1; i < 8; i++, j++, k--) {
+      moves.push([i, j]);
+      moves.push([i, k]);
+    }
+    for (let i = this._x - 1, j = this._y + 1, k = this._y - 1; i >= 0; i--, j++, k--) {
+      moves.push([i, j]);
+      moves.push([i, k]);
+    }
+
+    moves = moves.filter(e => {
+      if (e[0] < 8 && e[0] >= 0 && e[1] < 8 && e[1] >= 0) return true;
+      return false;
+    });
+
+    return moves;
+  }
+
   get visual() {
     return 'queen';
   }
@@ -162,6 +195,26 @@ class Queen extends Piece {
 }
 
 class King extends Piece {
+  projectMoves() {
+    let moves = [];
+
+    moves.push([this._x, this._y + 1]);
+    moves.push([this._x + 1, this._y + 1]);
+    moves.push([this._x + 1, this._y]);
+    moves.push([this._x + 1, this._y - 1]);
+    moves.push([this._x, this._y - 1]);
+    moves.push([this._x - 1, this._y - 1]);
+    moves.push([this._x - 1, this._y]);
+    moves.push([this._x - 1, this._y + 1]);
+
+    moves.filter(e => {
+      if (e[0] < 7 && e[0] >= 0 && e[1] < 7 && e[1] >= 0) return true;
+      return false;
+    })
+
+    return moves;
+  }
+
   get visual() {
     return 'king';
   }
