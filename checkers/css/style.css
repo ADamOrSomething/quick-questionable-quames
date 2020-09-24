@@ -1,0 +1,33 @@
+.game-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 50em;
+  height: 50em;
+  margin: auto;
+}
+
+.row {
+  display: flex;
+  flex-grow: 1;
+}
+
+.square {
+  display: flex;
+  flex-grow: 1;
+}
+
+.row:nth-child(odd) .square:nth-child(odd) {
+  background: black;
+}
+
+.row:nth-child(odd) .square:nth-child(even) {
+  background: white;
+}
+
+.row:nth-child(even) .square:nth-child(odd) {
+  background: white;
+}
+
+.row:nth-child(even) .square:nth-child(even) {
+  background: black;
+}
