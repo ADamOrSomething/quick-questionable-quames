@@ -1,5 +1,5 @@
 class Piece {
-  constructor(white) {
-    this.white = white;
+  constructor(red) {
+    this.red = red;
   }
 }
