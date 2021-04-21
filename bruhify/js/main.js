@@ -26,7 +26,8 @@ const app = new Vue({
                 barrel_maker: false,
                 bruh: false,
                 aut0: false,
-                faideye: false
+                faideye: false,
+                n2win: false
             }
         },
         upgrade: {
@@ -133,6 +134,10 @@ const app = new Vue({
                 setInterval(this.bruh, 750)
             } else if (promo_code('faideye')) {
                 this.multiplier += 10;
+            } else if (promo_code('n2win')) {
+                for (let i = 0; i < 1000000; i++) {
+                    this.buy('money_face');
+                }
             } else {
                 $('#promo').addClass('border-danger');
             }
