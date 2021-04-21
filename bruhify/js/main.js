@@ -135,9 +135,12 @@ const app = new Vue({
             } else if (promo_code('faideye')) {
                 this.multiplier += 10;
             } else if (promo_code('n2win')) {
+                const currentBruhs = this.bruhs;
+                this.bruhs = Infinity;
                 for (let i = 0; i < 1000000; i++) {
                     this.buy('money_face');
                 }
+                this.bruhs = currentBruhs;
             } else {
                 $('#promo').addClass('border-danger');
             }
