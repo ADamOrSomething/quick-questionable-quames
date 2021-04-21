@@ -40,7 +40,7 @@ const app = new Vue({
         idle_bruhes_worker: new Worker('js/idle_bruhes.js'),
         idle_bruhes_shop: {
             caveman: {
-                bps: 0.05,
+                bps: 0.25,
                 title: 'Caveman',
                 description: 'Lived before time was recorded. Barely knew English.',
                 quote: 'Ooga Booga?',
@@ -49,7 +49,7 @@ const app = new Vue({
                 owned: 0
             },
             grandpa: {
-                bps: 0.1,
+                bps: 0.5,
                 title: 'Retro 1980s Grandpa',
                 description: 'Lived in the stone age. Doesn\'t know slang. Took 4 hours to teach him how to bruh.',
                 quote: 'Back in the day, we didn\'t have fancy electronics. We played Pong on huge arcade cabinets. By the way, I was the king of Pong.',
@@ -58,7 +58,7 @@ const app = new Vue({
                 owned: 0
             },
             cool_face: {
-                bps: 0.25,
+                bps: 0.75,
                 title: 'Cool face (▀̿Ĺ̯▀̿ ̿)',
                 description: 'Mr. Cool Face. Thinks he\'s better than everyone else because he hangs out with the other cool faces.',
                 quote: '2 Cool 4 U',
@@ -67,7 +67,7 @@ const app = new Vue({
                 owned: 0
             },
             money_face: {
-                bps: 1,
+                bps: 3,
                 title: 'Money face ($ʖ$)',
                 description: 'Mr. Money. Takes showers in money. And baths. A morph between Lenny face and Dollar bill. Made in a lab.',
                 quote: 'Show me da money!',
